@@ -5,10 +5,10 @@
 }
 
 a:link, a:visited {
-  color: purple;
+  color: green;
   text-decoration: none;
 }
 
 a:hover {
-  text-shadow: 0 0 10px pink;
+  text-shadow: 0 0 10px lightgreen;
 }

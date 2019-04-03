@@ -1,4 +1,4 @@
-<div *ngIf='pokeDetail'>
+<div *ngIf='pokeDetail; else loading'>
   <h2>{{ pokeDetail.name }}</h2>
   <img [src]='pokeDetail.sprites.front_default' />
   <p><b>Weight:</b> {{ pokeDetail.weight }}</p>
@@ -12,3 +12,6 @@
     <li *ngFor='let mov of pokeDetail.moves'>{{mov.move.name}}</li>
   </ul>
 </div>
+<ng-template #loading><br />
+  <mat-spinner></mat-spinner>
+</ng-template>

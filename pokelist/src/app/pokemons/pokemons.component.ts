@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 
 interface IPokemon {
   name: string,
@@ -19,11 +19,16 @@ interface IResponse {
   styleUrls: ['./pokemons.component.css']
 })
 export class PokemonsComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'details'];
-  pokemons: IResponse;
-  dataSource = new MatTableDataSource();
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private http: HttpClient) { }
+  pokemons: IResponse;
+  dataSource: MatTableDataSource<IPokemon>;
+  displayedColumns: string[] = ['name', 'details'];
+
+  constructor(private http: HttpClient) {
+    this.dataSource = new MatTableDataSource();
+  }
 
   ngOnInit() {
     this.getPokemons();
@@ -37,10 +42,16 @@ export class PokemonsComponent implements OnInit {
         this.pokemons.results[i].id = i + 1;
       }
       this.dataSource = new MatTableDataSource(this.pokemons.results);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
     });
   }
 
   applyFilter(searchVal: string) {
     this.dataSource.filter = searchVal.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 }

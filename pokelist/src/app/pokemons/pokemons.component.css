@@ -1,0 +1,14 @@
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+
+.detailsEye {
+  cursor: pointer;
+}
+
+.redText {
+  color: red;
+}
+
+td {
+  width: 250px;
+  min-width: 150px;
+}
