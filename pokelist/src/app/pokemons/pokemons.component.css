@@ -12,3 +12,7 @@ td {
   width: 250px;
   min-width: 150px;
 }
+
+.pokeBox {
+  max-width: 600px;
+}
