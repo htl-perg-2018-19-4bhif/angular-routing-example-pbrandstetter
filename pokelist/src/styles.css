@@ -1,0 +1,14 @@
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+* {
+  font-family: 'Courier New', Courier, monospace
+}
+
+a:link, a:visited {
+  color: purple;
+  text-decoration: none;
+}
+
+a:hover {
+  text-shadow: 0 0 10px pink;
+}

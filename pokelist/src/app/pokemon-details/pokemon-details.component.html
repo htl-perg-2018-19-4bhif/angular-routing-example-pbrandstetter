@@ -1,0 +1,14 @@
+<div *ngIf='pokeDetail'>
+  <h2>{{ pokeDetail.name }}</h2>
+  <img [src]='pokeDetail.sprites.front_default' />
+  <p><b>Weight:</b> {{ pokeDetail.weight }}</p>
+  <p><b>Height:</b> {{ pokeDetail.height }}</p>
+  <p><b>Abilities:</b></p>
+  <ul>
+    <li *ngFor='let ab of pokeDetail.abilities'>{{ ab.ability.name }}</li>
+  </ul>
+  <p><b>Moves:</b></p>
+  <ul>
+    <li *ngFor='let mov of pokeDetail.moves'>{{mov.move.name}}</li>
+  </ul>
+</div>
